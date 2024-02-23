@@ -1,0 +1,136 @@
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row py-5">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <label for="firstValue" class="form-label">First Value</label>
+                    <input type="text" class="form-control" id="firstValue" placeholder="Enter any value">
+                </div>
+                <div class="mb-3">
+                    <label for="secondValue" class="form-label">Second Value</label>
+                    <input type="text" class="form-control" id="secondValue" placeholder="Enter any value">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="calculator(1)">Add</button>
+                <button type="button" class="btn btn-secondary" onclick="calculator(2)">Sub</button>
+                <button type="button" class="btn btn-success" onclick="calculator(3)">Mul</button>
+                <button type="button" class="btn btn-danger" onclick="calculator(4)">Div</button>
+                <div class="mb-3">
+                    <div class="row py-4">
+                        <div class="col-md">
+                            <label for="total" class="form-label">Total :</label>
+                        </div>
+                        <div class="col-md" id="totaldiv">
+                            <!-- <input type="text" class="form-control" id="total">
+                            <span id="totaldiv"></div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+     function calculator(choice){
+        switch(choice)
+        {
+            case 1 :{
+                    let input1 = document.getElementById("firstValue").value
+                    let input2 = document.getElementById("secondValue").value
+                    value = parseInt(input1) + parseInt(input2)
+                    document.getElementById("totaldiv").innerHTML = value;
+                break;
+            }
+            case 2 :{
+                    let input1 = document.getElementById("firstValue").value
+                    let input2 = document.getElementById("secondValue").value
+                    value = parseInt(input1) - parseInt(input2)
+                    document.getElementById("totaldiv").innerHTML = value;
+                break;
+            }
+            case 3 :{
+                    let input1 = document.getElementById("firstValue").value
+                    let input2 = document.getElementById("secondValue").value
+                    value = parseInt(input1) * parseInt(input2)
+                    document.getElementById("totaldiv").innerHTML = value;
+                break;
+            }
+            case 4 :{
+                    let input1 = document.getElementById("firstValue").value
+                    let input2 = document.getElementById("secondValue").value
+                    value = parseInt(input1) / parseInt(input2)
+                    document.getElementById("totaldiv").innerHTML = value;
+                break;
+            }
+        }
+    }
+
+     
+    // function add(){
+    //     let input1 = document.getElementById("firstValue").value
+    //     let input2 = document.getElementById("secondValue").value
+    //     value = parseInt(input1) + parseInt(input2)
+    //     document.getElementById("totaldiv").innerHTML = value;
+    // }
+
+    // function sub(){
+    //     let input1 = document.getElementById("firstValue").value
+    //     let input2 = document.getElementById("secondValue").value
+    //     value = parseInt(input1) - parseInt(input2)
+    //     document.getElementById("totaldiv").innerHTML = value;
+    // }
+
+    // function mul(){
+    //     let input1 = document.getElementById("firstValue").value
+    //     let input2 = document.getElementById("secondValue").value
+    //     value = parseInt(input1) * parseInt(input2)
+    //     document.getElementById("totaldiv").innerHTML = value;
+    // }
+
+    // function div(){
+    //     let input1 = document.getElementById("firstValue").value
+    //     let input2 = document.getElementById("secondValue").value
+    //     value = parseInt(input1) / parseInt(input2)
+    //     document.getElementById("totaldiv").innerHTML = value;
+    // }
+   
+</script>
+</html>
