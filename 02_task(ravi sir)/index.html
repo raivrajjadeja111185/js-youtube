@@ -125,6 +125,15 @@
         document.getElementById("commentText").value = str;
     }
 
+    function copyClipboard(){
+        let copyText = document.getElementById("commentText");
+        // console.log(copyText);
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(copyText.value);
+        alert("Copied the text: " + copyText.value);
+    }
+
     function getVoices(){
         let text = document.getElementById("commentText").value;
         let msg = new SpeechSynthesisUtterance();
