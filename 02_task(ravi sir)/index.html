@@ -1,0 +1,136 @@
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row py-2">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <div class="mb-3">
+                    <label for="commentText" class="form-label">Enter your text here:</label>
+                    <textarea class="form-control" id="commentText" rows="3"></textarea>
+                </div>
+                
+                <div class="mb-3">
+                        <p>Word Count: <span id="ResultWordCount" style="color: red;">0</span> </p>
+                        <p>Text Count: <span id="ResultTextCount" style="color: red;">0</span> </p>
+                        <p>Text Count Without Space: <span id="numCountWithoutSpace" style="color: red;">0</span>  </p>
+                </div>
+                <div class="py-2" style="text-align: center;">
+                    <button type="button" class="btn btn-primary" onclick="wordCount()">Word Count</button>
+                    <button type="button" class="btn btn-secondary" onclick="textCount()">Text Count</button>
+                    <button type="button" class="btn btn-success" onclick="countWithoutSpace()">Text Count Without Space</button>
+                    <button type="button" class="btn btn-danger" onclick="upperCase()">Upper Latter</button>
+                    <button type="button" class="btn btn-warning" onclick="lowerCase()">Lower Latter</button>
+                </div>
+                <div class="py-2" style="text-align: center;">
+                    <button type="button" class="btn btn-info" onclick="titleCase()">Title Case</button>
+                    <button type="button" class="btn btn-warning" onclick="removeSpecialChar()">Remove Special Charactor</button>
+                    <button type="button" class="btn btn-dark" onclick="removeSpace()">Remove Space</button>
+                    <button type="button" class="btn btn-primary" onclick="copyClipboard()">Copy to Clipboard</button>
+                    <button type="button" class="btn btn-success" onclick="getVoices()">Listen Text</button>
+                </div>
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function wordCount(){
+        let commentText = document.getElementById("commentText").value;
+        let array = commentText.trim().split(" ");
+        let numWordCount = array.length;
+        document.getElementById("ResultWordCount").innerHTML = numWordCount;
+   }
+
+   function textCount(){
+        let commentText = document.getElementById("commentText").value;
+        let numTextCount = commentText.length;
+        document.getElementById("ResultTextCount").innerHTML = numTextCount;
+   }
+
+   function countWithoutSpace(){
+        let str = document.getElementById("commentText").value;
+        str=str.split(" ").join("");
+        let numCountWithoutSpace = str.length;
+        document.getElementById("numCountWithoutSpace").innerHTML = numCountWithoutSpace;
+   }
+
+   function upperCase(){
+        let commentText = document.getElementById("commentText").value;
+        let upperCaseText = commentText.toLocaleUpperCase();
+        document.getElementById("commentText").value = upperCaseText;
+   }
+
+   function lowerCase(){
+        let commentText = document.getElementById("commentText").value;
+        let upperCaseText = commentText.toLocaleLowerCase();
+        document.getElementById("commentText").value = upperCaseText;
+   }
+    
+    function titleCase() {
+        let str = document.getElementById("commentText").value;
+
+        str = str.toLowerCase().split(' ');
+        for (let i = 0; i < str.length; i++) {
+            str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+        }
+
+        let tCase = str.join(' ');
+        document.getElementById("commentText").value = tCase;
+    }
+
+    function removeSpecialChar(){
+        let str = document.getElementById("commentText").value;
+        str = str.replace(/[^a-zA-Z ]/g, " ");
+        str = str.replace(/ +/g, " ");
+        document.getElementById("commentText").value = str;
+    }
+
+    function removeSpace(){
+        let str = document.getElementById("commentText").value;
+        str=str.split(" ").join("");
+        document.getElementById("commentText").value = str;
+    }
+
+    function getVoices(){
+        let text = document.getElementById("commentText").value;
+        let msg = new SpeechSynthesisUtterance();
+        msg.text = text;
+        window.speechSynthesis.speak(msg);
+    }
+    
+</script>   
+</html>
